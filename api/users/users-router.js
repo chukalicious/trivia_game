@@ -48,6 +48,23 @@ router.post("/users/add", (req, res) => {
   }
 });
 
+router.put("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+  if (!changes.character) {
+    res.status(404).json({ message: "You must choose a new caracter" });
+  } else {
+    try {
+      const updatedUser = await Users.update(id, changes);
+      if (updatedUser) {
+        res.status(201).json(updatedUser);
+      }
+    } catch (err) {
+      res.status(500).json({ message: "server error", error: err.message });
+    }
+  }
+});
+
 router.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   Users.remove(id)

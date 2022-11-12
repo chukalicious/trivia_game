@@ -6,6 +6,7 @@ module.exports = {
   allUsers,
   userById,
   add,
+  update,
   remove,
 };
 
@@ -14,7 +15,6 @@ function allUsers() {
 }
 
 function userById(id) {
-  const numberId = Number(id);
   return db("users").where({ id }).first();
 }
 
@@ -24,6 +24,10 @@ function add(user) {
     .then((ids) => {
       return userById(ids);
     });
+}
+
+function update(id, changes) {
+  return db("users").where("id", Number(id)).update(changes);
 }
 
 function remove(id) {
