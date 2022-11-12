@@ -1,0 +1,29 @@
+{
+  "name": "server-with-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chukalicious/server-with-CRUD.git"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.21",
+    "sqlite3": "^5.0.0"
+  },
+  "author": "Katiuska Alicea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chukalicious/server-with-CRUD/issues"
+  },
+  "homepage": "https://github.com/chukalicious/server-with-CRUD#readme"
+}
