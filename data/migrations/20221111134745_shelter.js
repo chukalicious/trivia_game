@@ -5,6 +5,12 @@ exports.up = function (knex) {
       tbl.string("name").notNullable();
       tbl.string("email").unique().notNullable();
     })
+    .createTable("users", (tbl) => {
+      tbl.increments();
+      tbl.string("username").notNullable();
+      tbl.string("character");
+      tbl.string("avatar");
+    })
     .createTable("dogs", (tbl) => {
       tbl.increments();
       tbl.string("name").notNullable();
@@ -20,5 +26,8 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("dogs").dropTableIfExists("adopters");
+  return knex.schema
+    .dropTableIfExists("dogs")
+    .dropTableIfExists("users")
+    .dropTableIfExists("adopters");
 };

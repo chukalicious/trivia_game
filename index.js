@@ -6,6 +6,7 @@ server.use(express.json());
 
 const Adopter = require("./api/adopters/adopters-model");
 const Dog = require("./api/dogs/dogs-model");
+const Users = require("./api/users/users-model");
 
 // ADOPTERS ENDPOINTS
 // ADOPTERS ENDPOINTS
@@ -133,6 +134,74 @@ server.get("/api/dogs", (req, res) => {
       res.status(500).json({
         message: "Error retrieving the dogs",
       });
+    });
+});
+
+// USER ENDPOINTS
+// USER ENDPOINTS
+// USER ENDPOINTS
+
+server.get("/users", (req, res) => {
+  Users.allUsers()
+    .then((users) => {
+      if (users) {
+        res.status(200).json(users);
+      } else {
+        res.status(402).json({ message: "not found" });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "server error" });
+    });
+});
+
+server.get("/users/:id", (req, res) => {
+  const { id } = req.params;
+  Users.userById(id)
+    .then((user) => {
+      if (!user) {
+        res.status(404).json({ message: "could not find user by the id" });
+      } else {
+        res.status(200).json(user);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "server error" });
+    });
+});
+
+server.post("/users/add", (req, res) => {
+  const user = req.body;
+  if (!user.username) {
+    res
+      .status(400)
+      .json({ message: "you must add a user name and choose a character" });
+  } else {
+    Users.add(user)
+      .then((user) => {
+        res.status(200).json(user);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: "server error" });
+      });
+  }
+});
+
+server.delete("/users/:id", (req, res) => {
+  const { id } = req.params;
+  Users.remove(id)
+    .then((deleted) => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: "Could not find user with given id" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Failed to delete user" });
     });
 });
 
