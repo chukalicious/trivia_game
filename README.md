@@ -12,12 +12,9 @@ Simple Web API using `Node.js` and `Express`,
 - [ ] **CD into the folder** where you cloned the repo.
 - [ ] type `npm i` to download dependencies.
 
-Endpoints included: 
 
-| Not using REST     | Using REST             |
-| ------------------ | ---------------------- |
-| `/listAllAdopters` | GET /adopters          |
-| `/createAdopter`   | POST /adopters         |
-| `/updateAdopter`   | PUT /adopters/:id      |
-| `/deleteAdopter`   | DELETE /adopters/:id   |
-| `/listAdopterDogs` | GET /adopters/:id/dogs |
+Documentation generated with Postmanr: 
+
+[API Documentation](http://https://documenter.getpostman.com/view/12258213/2s8YerNYAM "API Documentation")
+
+
