@@ -23,6 +23,21 @@ server.get("/api/adopters", (req, res) => {
     });
 });
 
+server.get("/api/adopters/all", (req, res) => {
+  Adopter.findAll()
+    .then((adopters) => {
+      if (adopters) {
+        res.status(200).json(adopters);
+      } else {
+        res.status(404).json({ message: "not found" });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: err });
+    });
+});
+
 server.get("/api/adopters/:id", (req, res) => {
   Adopter.findById(req.params.id)
     .then((adopter) => {
