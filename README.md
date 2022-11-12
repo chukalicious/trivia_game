@@ -15,6 +15,6 @@ Simple Web API using `Node.js` and `Express`,
 
 Documentation generated with Postmanr: 
 
-[API Documentation](http://https://documenter.getpostman.com/view/12258213/2s8YerNYAM "API Documentation")
+[API Documentation](https://documenter.getpostman.com/view/12258213/2s8YerNYAM)
 
 
