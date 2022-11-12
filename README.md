@@ -1,4 +1,4 @@
-# CRUD Starter Code
+# Trivia Game CRUD
 
 Simple Web API using `Node.js` and `Express`,
 
